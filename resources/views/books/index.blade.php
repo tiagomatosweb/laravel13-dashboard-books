@@ -63,7 +63,7 @@
                             <td><span class="badge bg-primary bg-opacity-10 text-primary">Ficção</span></td>
                             <td class="text-muted">1925</td>
                             <td>
-                                <a href="book-view.html" class="btn btn-sm btn-outline-primary me-1">Ver</a>
+                                <a href="{{ route('books.show', 1) }}" class="btn btn-sm btn-outline-primary me-1">Ver</a>
                                 <a href="book-create.html" class="btn btn-sm btn-outline-success me-1">Editar</a>
                                 <button class="btn btn-sm btn-outline-danger">Excluir</button>
                             </td>
@@ -77,7 +77,7 @@
                             <td><span class="badge bg-primary bg-opacity-10 text-primary">Ficção</span></td>
                             <td class="text-muted">1960</td>
                             <td>
-                                <a href="book-view.html" class="btn btn-sm btn-outline-primary me-1">Ver</a>
+                                <a href="{{ route('books.show', 2) }}" class="btn btn-sm btn-outline-primary me-1">Ver</a>
                                 <a href="book-create.html" class="btn btn-sm btn-outline-success me-1">Editar</a>
                                 <button class="btn btn-sm btn-outline-danger">Excluir</button>
                             </td>
@@ -91,7 +91,7 @@
                             <td><span class="badge bg-primary bg-opacity-10 text-primary">Distopia</span></td>
                             <td class="text-muted">1949</td>
                             <td>
-                                <a href="book-view.html" class="btn btn-sm btn-outline-primary me-1">Ver</a>
+                                <a href="{{ route('books.show', 3) }}" class="btn btn-sm btn-outline-primary me-1">Ver</a>
                                 <a href="book-create.html" class="btn btn-sm btn-outline-success me-1">Editar</a>
                                 <button class="btn btn-sm btn-outline-danger">Excluir</button>
                             </td>
@@ -105,7 +105,7 @@
                             <td><span class="badge bg-primary bg-opacity-10 text-primary">Fantasia</span></td>
                             <td class="text-muted">1997</td>
                             <td>
-                                <a href="book-view.html" class="btn btn-sm btn-outline-primary me-1">Ver</a>
+                                <a href="{{ route('books.show', 4) }}" class="btn btn-sm btn-outline-primary me-1">Ver</a>
                                 <a href="book-create.html" class="btn btn-sm btn-outline-success me-1">Editar</a>
                                 <button class="btn btn-sm btn-outline-danger">Excluir</button>
                             </td>
@@ -119,7 +119,7 @@
                             <td><span class="badge bg-primary bg-opacity-10 text-primary">Romance</span></td>
                             <td class="text-muted">1813</td>
                             <td>
-                                <a href="book-view.html" class="btn btn-sm btn-outline-primary me-1">Ver</a>
+                                <a href="{{ route('books.show', 5) }}" class="btn btn-sm btn-outline-primary me-1">Ver</a>
                                 <a href="book-create.html" class="btn btn-sm btn-outline-success me-1">Editar</a>
                                 <button class="btn btn-sm btn-outline-danger">Excluir</button>
                             </td>
