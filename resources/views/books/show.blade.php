@@ -40,8 +40,8 @@
                     <div class="card-header bg-primary text-white py-4">
                         <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <h1 class="h2 mb-1">O Grande Gatsby</h1>
-                                <p class="lead mb-0 opacity-75">por F. Scott Fitzgerald</p>
+                                <h1 class="h2 mb-1">{{ $book['title'] }}</h1>
+                                <p class="lead mb-0 opacity-75">por {{ $book['author'] }}</p>
                             </div>
                             <div class="d-flex gap-2">
                                 <a href="book-create.html" class="btn btn-light">Editar</a>
@@ -67,11 +67,11 @@
                                 <table class="table table-sm table-borderless">
                                     <tr>
                                         <td class="text-muted fw-medium w-40 pe-3">Gênero:</td>
-                                        <td><span class="badge bg-primary bg-opacity-10 text-primary">Ficção</span></td>
+                                        <td><span class="badge bg-primary bg-opacity-10 text-primary">{{ $book['genre'] }}</span></td>
                                     </tr>
                                     <tr>
                                         <td class="text-muted fw-medium pe-3">Publicado:</td>
-                                        <td>10 de Abril de 1925</td>
+                                        <td>{{ $book['published_year'] }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -79,12 +79,7 @@
                             <!-- Descrição -->
                             <div class="col-12">
                                 <h2 class="h5 mb-3">Sobre Este Livro</h2>
-                                <p class="mb-3">
-                                    O Grande Gatsby é um romance de 1925 do escritor americano F. Scott Fitzgerald. Situado na Era do Jazz em Long Island, o romance retrata as interações do narrador Nick Carraway com o misterioso milionário Jay Gatsby e a obsessão de Gatsby em se reunir com seu antigo amor, Daisy Buchanan.
-                                </p>
-                                <p class="mb-0">
-                                    A história é amplamente considerada uma das maiores obras da literatura americana, explorando temas de decadência, idealismo, resistência à mudança, agitação social e excesso, criando um retrato dos Anos Loucos que foi chamado de "conto de advertência" sobre o Sonho Americano.
-                                </p>
+                                {{ $book['description'] }}
                             </div>
                         </div>
 
