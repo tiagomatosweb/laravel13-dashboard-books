@@ -45,19 +45,13 @@
                 </table>
             </div>
 
+
             <!-- Paginação -->
-            <div class="card-footer d-flex justify-content-between align-items-center bg-light">
-                <span class="text-muted">Mostrando 1 a 5 de 24 resultados</span>
-                <nav>
-                    <ul class="pagination pagination-sm mb-0">
-                        <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-                    </ul>
-                </nav>
+            @if($books->hasPages())
+            <div class="card-footer bg-light">
+                {{ $books->links() }}
             </div>
+            @endif
         </div>
     </div>
 </x-layout>
