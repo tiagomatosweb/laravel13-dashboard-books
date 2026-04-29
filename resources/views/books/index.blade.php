@@ -29,13 +29,13 @@
                         @foreach ($books as $book)
                         <tr>
                             <td>
-                                <div class="fw-medium">{{ $book['title'] }}</div>
+                                <div class="fw-medium">{{ $book->title }}</div>
                             </td>
                             <td>{{ $book['author'] }}</td>
-                            <td><span class="badge bg-primary bg-opacity-10 text-primary">{{ $book['genre'] }}</span></td>
-                            <td class="text-muted">{{ $book['published_year'] }}</td>
+                            <td><span class="badge bg-primary bg-opacity-10 text-primary">{{ $book->genre->name }}</span></td>
+                            <td class="text-muted">{{ $book->published_year }}</td>
                             <td>
-                                <a href="{{ route('books.show', $book['id']) }}" class="btn btn-sm btn-outline-primary me-1">Ver</a>
+                                <a href="{{ route('books.show', $book->id) }}" class="btn btn-sm btn-outline-primary me-1">Ver</a>
                                 <a href="book-create.html" class="btn btn-sm btn-outline-success me-1">Editar</a>
                                 <button class="btn btn-sm btn-outline-danger">Excluir</button>
                             </td>

@@ -11,8 +11,8 @@
                     <div class="card-header bg-primary text-white py-4">
                         <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <h1 class="h2 mb-1">{{ $book['title'] }}</h1>
-                                <p class="lead mb-0 opacity-75">por {{ $book['author'] }}</p>
+                                <h1 class="h2 mb-1">{{ $book->title }}</h1>
+                                <p class="lead mb-0 opacity-75">por {{ $book->author }}</p>
                             </div>
                             <div class="d-flex gap-2">
                                 <a href="book-create.html" class="btn btn-light">Editar</a>
@@ -38,11 +38,11 @@
                                 <table class="table table-sm table-borderless">
                                     <tr>
                                         <td class="text-muted fw-medium w-40 pe-3">Gênero:</td>
-                                        <td><span class="badge bg-primary bg-opacity-10 text-primary">{{ $book['genre'] }}</span></td>
+                                        <td><span class="badge bg-primary bg-opacity-10 text-primary">{{ $book->genre->name }}</span></td>
                                     </tr>
                                     <tr>
                                         <td class="text-muted fw-medium pe-3">Publicado:</td>
-                                        <td>{{ $book['published_year'] }}</td>
+                                        <td>{{ $book->published_year }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -50,7 +50,7 @@
                             <!-- Descrição -->
                             <div class="col-12">
                                 <h2 class="h5 mb-3">Sobre Este Livro</h2>
-                                {{ $book['description'] }}
+                                {{ $book->description }}
                             </div>
                         </div>
 
