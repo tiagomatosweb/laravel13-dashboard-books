@@ -12,7 +12,7 @@ class BookController extends Controller
     {
         // Eager loading
         // Lazy loading
-        $books = Book::with('genre')->paginate(5);
+        $books = Book::with('genre')->orderBy('title')->paginate(5);
 
         return view('books.index', [
             'books' =>  $books,
@@ -25,6 +25,22 @@ class BookController extends Controller
         return view('books.create', [
             'genres' => $genres,
         ]);
+    }
+
+    public function store(Request $request)
+    {
+//   "cover" => null
+        $validated = $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'genre_id' => 'required|exists:genres,id',
+            'published_year' => 'required',
+            'description' => 'nullable',
+        ]);
+        
+        Book::create($validated);
+
+        return redirect()->route('books.index');
     }
 
     public function show(Book $book)

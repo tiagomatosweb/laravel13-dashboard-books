@@ -12,18 +12,26 @@
                 <!-- Formulário -->
                 <div class="card shadow-sm">
                     <div class="card-body p-4">
-                        <form>
+                        <form method="POST" action="{{ route('books.store') }}">
                             @csrf
                             <!-- Título -->
                             <div class="mb-3">
                                 <label for="title" class="form-label">Título do Livro <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Digite o título do livro" required>
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Digite o título do livro" value="{{ old('title') }}">
+                                
+                                @error('title')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <!-- Autor -->
                             <div class="mb-3">
                                 <label for="author" class="form-label">Autor <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="author" name="author" placeholder="Digite o nome do autor" required>
+                                <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" placeholder="Digite o nome do autor" value="{{ old('author') }}">
+
+                                @error('author')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <!-- Capa do Livro -->
@@ -37,23 +45,32 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="genre" class="form-label">Gênero <span class="text-danger">*</span></label>
-                                    <select class="form-select" id="genre_id" name="genre_id" required>
+                                    <select class="form-select @error('genre_id') is-invalid @enderror" id="genre_id" name="genre_id">
                                         <option value="">Selecione o Gênero</option>
+                                        
                                         @foreach ($genres as $genre)
-                                          <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                                          <option value="{{ $genre->id }}" @selected(old('genre_id') == $genre->id)>{{ $genre->name }}</option>
                                         @endforeach
                                     </select>
+
+                                    @error('genre_id')
+                                      <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <label for="published" class="form-label">Ano de Publicação <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" id="published" name="published" placeholder="2025" min="1000" max="2099" required>
+                                    <input type="number" class="form-control @error('published_year') is-invalid @enderror" id="published_year" name="published_year" placeholder="2025" value="{{ old('published_year') }}">
+
+                                    @error('published_year')
+                                      <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <!-- Descrição -->
                             <div class="mb-3">
                                 <label for="description" class="form-label">Descrição</label>
-                                <textarea class="form-control" id="description" name="description" rows="5" placeholder="Digite a descrição do livro..."></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="5" placeholder="Digite a descrição do livro...">{{ old('published_year') }}</textarea>
                             </div>
 
                             <!-- Botões -->
