@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -15,6 +16,14 @@ class BookController extends Controller
 
         return view('books.index', [
             'books' =>  $books,
+        ]);
+    }
+
+    public function create()
+    {
+        $genres = Genre::all();
+        return view('books.create', [
+            'genres' => $genres,
         ]);
     }
 
