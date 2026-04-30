@@ -31,7 +31,7 @@
                             <td>
                                 <div class="fw-medium">{{ $book->title }}</div>
                             </td>
-                            <td>{{ $book['author'] }}</td>
+                            <td>{{ $book->author }}</td>
                             <td><span class="badge bg-primary bg-opacity-10 text-primary">{{ $book->genre->name }}</span></td>
                             <td class="text-muted">{{ $book->published_year }}</td>
                             <td>

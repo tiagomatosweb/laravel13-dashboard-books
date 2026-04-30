@@ -29,14 +29,18 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-//   "cover" => null
         $validated = $request->validate([
             'title' => 'required',
             'author' => 'required',
             'genre_id' => 'required|exists:genres,id',
             'published_year' => 'required',
             'description' => 'nullable',
+            'cover' => 'image|required',
         ]);
+
+        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
+            $validated['cover'] = $request->file('cover')->store();
+        }
         
         Book::create($validated);
 
@@ -46,6 +50,7 @@ class BookController extends Controller
     public function show(Book $book)
     {
         $book->loadMissing('genre');
+
         return view('books.show', [
             'book' => $book,
         ]);

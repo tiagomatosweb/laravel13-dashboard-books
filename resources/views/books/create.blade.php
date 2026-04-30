@@ -12,7 +12,7 @@
                 <!-- Formulário -->
                 <div class="card shadow-sm">
                     <div class="card-body p-4">
-                        <form method="POST" action="{{ route('books.store') }}">
+                        <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data">
                             @csrf
                             <!-- Título -->
                             <div class="mb-3">
@@ -37,7 +37,10 @@
                             <!-- Capa do Livro -->
                             <div class="mb-3">
                                 <label for="cover" class="form-label">Capa do Livro</label>
-                                <input type="file" class="form-control" id="cover" name="cover" accept="image/*">
+                                <input type="file" class="form-control  @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*">
+                                    @error('cover')
+                                      <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 <div class="form-text">Imagem JPG, PNG ou WebP (máx. 2MB)</div>
                             </div>
 
