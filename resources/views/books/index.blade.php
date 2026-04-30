@@ -36,7 +36,7 @@
                             <td class="text-muted">{{ $book->published_year }}</td>
                             <td>
                                 <a href="{{ route('books.show', $book->id) }}" class="btn btn-sm btn-outline-primary me-1">Ver</a>
-                                <a href="book-create.html" class="btn btn-sm btn-outline-success me-1">Editar</a>
+                                <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm btn-outline-success me-1">Editar</a>
                                 <button class="btn btn-sm btn-outline-danger">Excluir</button>
                             </td>
                         </tr>

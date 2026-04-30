@@ -15,7 +15,7 @@
                                 <p class="lead mb-0 opacity-75">por {{ $book->author }}</p>
                             </div>
                             <div class="d-flex gap-2">
-                                <a href="book-create.html" class="btn btn-light">Editar</a>
+                                <a href="{{ route('books.edit', $book->id) }}" class="btn btn-light">Editar</a>
                                 <button class="btn btn-danger">Excluir</button>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                         <!-- Botões de Ação -->
                         <div class="mt-4 pt-3 border-top d-flex gap-3">
                             <a href="{{ route('books.index') }}" class="btn btn-primary px-4">Voltar para a Lista</a>
-                            <a href="book-create.html" class="btn btn-success px-4">Editar Livro</a>
+                            <a href="{{  route('books.edit', $book->id) }}" class="btn btn-success px-4">Editar Livro</a>
                         </div>
                     </div>
                 </div>

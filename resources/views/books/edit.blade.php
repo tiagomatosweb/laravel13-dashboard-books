@@ -5,19 +5,21 @@
                 <!-- Cabeçalho -->
                 <div class="mb-4">
                     <a href="{{ route('books.index') }}" class="text-decoration-none mb-2 d-inline-block">← Voltar para Livros</a>
-                    <h1 class="mb-1">Adicionar Novo Livro</h1>
+                    <h1 class="mb-1">Editar Livro</h1>
                     <p class="text-muted mb-0">Preencha os detalhes para adicionar um livro à sua coleção</p>
                 </div>
 
                 <!-- Formulário -->
                 <div class="card shadow-sm">
                     <div class="card-body p-4">
-                        <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('books.update', $book->id) }}" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
+
                             <!-- Título -->
                             <div class="mb-3">
                                 <label for="title" class="form-label">Título do Livro <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Digite o título do livro" value="{{ old('title') }}">
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Digite o título do livro" value="{{ old('title', $book->title) }}">
                                 
                                 @error('title')
                                   <div class="invalid-feedback">{{ $message }}</div>
@@ -27,7 +29,7 @@
                             <!-- Autor -->
                             <div class="mb-3">
                                 <label for="author" class="form-label">Autor <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" placeholder="Digite o nome do autor" value="{{ old('author') }}">
+                                <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" placeholder="Digite o nome do autor" value="{{ old('author', $book->author) }}">
 
                                 @error('author')
                                   <div class="invalid-feedback">{{ $message }}</div>
@@ -37,6 +39,9 @@
                             <!-- Capa do Livro -->
                             <div class="mb-3">
                                 <label for="cover" class="form-label">Capa do Livro</label>
+                                <div class="mb-2">
+                                    <img src="{{ Storage::url($book->cover) }}" style="max-height: 150px">
+                                </div>
                                 <input type="file" class="form-control  @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*">
                                     @error('cover')
                                       <div class="invalid-feedback">{{ $message }}</div>
@@ -52,7 +57,7 @@
                                         <option value="">Selecione o Gênero</option>
                                         
                                         @foreach ($genres as $genre)
-                                          <option value="{{ $genre->id }}" @selected(old('genre_id') == $genre->id)>{{ $genre->name }}</option>
+                                          <option value="{{ $genre->id }}" @selected(old('genre_id', $book->genre_id) == $genre->id)>{{ $genre->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -62,7 +67,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="published" class="form-label">Ano de Publicação <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control @error('published_year') is-invalid @enderror" id="published_year" name="published_year" placeholder="2025" value="{{ old('published_year') }}">
+                                    <input type="number" class="form-control @error('published_year') is-invalid @enderror" id="published_year" name="published_year" placeholder="2025" value="{{ old('published_year', $book->published_year) }}">
 
                                     @error('published_year')
                                       <div class="invalid-feedback">{{ $message }}</div>
@@ -73,12 +78,12 @@
                             <!-- Descrição -->
                             <div class="mb-3">
                                 <label for="description" class="form-label">Descrição</label>
-                                <textarea class="form-control" id="description" name="description" rows="5" placeholder="Digite a descrição do livro...">{{ old('description') }}</textarea>
+                                <textarea class="form-control" id="description" name="description" rows="5" placeholder="Digite a descrição do livro...">{{ old('description', $book->description) }}</textarea>
                             </div>
 
                             <!-- Botões -->
                             <div class="d-flex gap-3 mt-4">
-                                <button type="submit" class="btn btn-primary px-4">Adicionar Livro</button>
+                                <button type="submit" class="btn btn-primary px-4">Editar Livro</button>
                                 <a href="{{ route('books.index') }}" class="btn btn-outline-secondary px-4">Cancelar</a>
                             </div>
                         </form>

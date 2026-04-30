@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -54,6 +55,38 @@ class BookController extends Controller
         return view('books.show', [
             'book' => $book,
         ]);
+    }
+
+    public function edit(Book $book)
+    {
+        $genres = Genre::all();
+        return view('books.edit', [
+            'book' => $book,
+            'genres' => $genres,
+        ]);
+    }
+
+    public function update(Book $book, Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'genre_id' => 'required|exists:genres,id',
+            'published_year' => 'required',
+            'description' => 'nullable',
+            'cover' => 'image|nullable',
+        ]);
+
+        if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
+            if ($book->cover) {
+                Storage::delete($book->cover);
+            }
+            $validated['cover'] = $request->file('cover')->store();
+        }
+        
+        $book->update($validated);
+
+        return redirect()->route('books.index');
     }
 }
 
