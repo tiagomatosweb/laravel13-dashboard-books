@@ -16,7 +16,11 @@
                             </div>
                             <div class="d-flex gap-2">
                                 <a href="{{ route('books.edit', $book->id) }}" class="btn btn-light">Editar</a>
-                                <button class="btn btn-danger">Excluir</button>
+                                <form method="POST" action="{{ route('books.destroy', $book->id) }}" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
                             </div>
                         </div>
                     </div>
